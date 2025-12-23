@@ -1,0 +1,284 @@
+/* CSS reset */
+@import url('./reset.css');
+
+/* Google fonts and icons */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=explore,favorite,menu_book,search');
+
+@import url('./recipes.css');
+
+/* CSS variables */
+:root {
+    /* font sizes */
+    --h1: 40px;
+    --h2: 32px;
+    --h3: 24px;
+    --h4: 18px;
+    --body-text: 16px;
+    --labels: 14px;
+
+    /* color palette */
+    --primary-color: #2e4954;
+    --secondary-color: #dbded7;
+    --tertiary-color: #bfc5b8;
+    --quaternary-color: #225d77;
+
+    /* spacing */
+    --page-space-inline: 48px;
+}
+
+body {
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    font-size: var(--body-text);
+}
+
+.icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL'0,
+    'wght'400,
+    'GRAD'0,
+    'opsz'24
+}
+
+.icon--fill {
+    font-variation-settings: 'FILL'1,
+        'wght'400,
+        'GRAD'0,
+        'opsz'24
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: var(--h1);
+}
+
+h2 {
+    font-size: var(--h2);
+    font-weight: 300;
+}
+
+h3 {
+    font-size: var(--h3);
+}
+
+h4 {
+    font-size: var(--h4);
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow-x: hidden;
+    justify-content: center;
+    margin-inline: auto;
+    max-width: 1600px;
+    background-color: var(--secondary-color);
+
+}
+
+@supports (scrollbar-color: auto) {
+    .page {
+        scrollbar-color: var(--tertiary-color) transparent;
+        scrollbar-width: thin;
+    }
+}
+
+@supports selector(::-webkit-scrollbar) {
+    .page::-webkit-scrollbar {
+        background: transparent;
+        width: 8px;
+    }
+
+    .page::-webkit-scrollbar-thumb {
+        background: var(--tertiary-color);
+        border-radius: 16px;
+    }
+}
+
+/* page header styles */
+.page_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 24px;
+    padding-inline: var(--page-space-inline);
+    color: var(--primary-color);
+    font-size: 14px;
+    border-bottom: 1px solid var(--tertiary-color);
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary-color);
+}
+
+.page_header_logo {
+    width: 240px;
+}
+
+.page_header_search {
+    background-color: var(--tertiary-color);
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: calc(100% - 760px);
+    font-size: var(--body-text);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    width: 100%;
+}
+
+.page_header_search input {
+    background-color: transparent;
+    width: calc(100% - 30px);
+}
+
+.page_header_search #search-bar::selection {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.search_button {
+    width: 24px;
+    height: 24px;
+}
+
+.page_header_navbar,
+.page_header_navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_header_navbar {
+    gap: 30px;
+}
+
+.page_header_navbar a {
+    font-size: var(--body-text);
+    transition: 250ms ease;
+    padding-block-end: 4px;
+    position: relative;
+    gap: 5px;
+}
+
+.page_header_navbar a::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    transition: width 250ms ease;
+    position: absolute;
+    background-color: #175a00;
+    transform-origin: center center;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.page_header_navbar a:is(:hover, :active, .is-active) {
+    color: #175a00;
+    border-bottom-color: #175a00;
+}
+
+.page_header_navbar a:is(:hover, :active, .is-active)::after {
+    width: 100%;
+}
+
+.page_header_navbar a:is(:hover, :active, .is-active) i {
+    font-variation-settings: 'FILL'1,
+    'wght'400,
+    'GRAD'0,
+    'opsz'24
+}
+
+.page_main {
+    height: 100%;
+    padding-inline: var(--page-space-inline);
+    padding-block-end: 32px;
+}
+
+.page_main_hero-banner img {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-bottom-left-radius: 48px;
+    border-bottom-right-radius: 48px;
+}
+
+.page_footer {
+    padding-block: 16px;
+    border-top: 1px solid var(--tertiary-color);
+    color: var(--primary-color);
+    font-size: var(--labels);
+    text-align: center;
+    padding-inline: var(--page-space-inline);
+}
+
+.footer_nav {
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    justify-self: center;
+}
+
+.footer_nav a {
+    color: var(--quaternary-color);
+}
+
+.coming-soon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.coming-soon h2 {
+    font-size: 120px;
+    font-weight: 600;
+    color: transparent;
+    background: linear-gradient(0deg, #04ccb1, #07bfb4, #0ab1b3, #0c99a6, #0e849a, #10728f, #126184, #135279, #14456e, #143a64, #14305a, #142850);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
+}
+
+.coming-soon p {
+    max-width: 800px;
+    padding-block: 24px;
+    list-style: 1.6;
+    color: var(--primary-color);
+    font-size: var(--h4);
+    text-align: center;
+}

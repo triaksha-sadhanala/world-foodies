@@ -1,0 +1,97 @@
+/* popular recipes */
+.recipes {
+    margin-block: 32px;
+}
+
+.recipes_title {
+    margin-block-end: 24px;
+}
+
+.recipes_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.recipes_recipe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipes_recipe img {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+}
+
+.recipes_recipe h3 {
+    margin-block: 16px;
+    font-size: var(--h4);
+}
+
+.recipes_recipe_view {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    width: 80%;
+    padding-inline: 16px;
+    padding-block: 6px;
+    border-radius: 32px;
+    text-align: center;
+    transition: color 250ms ease;
+}
+
+.recipes_recipe_view:is(:hover, :active) {
+    color: var(--secondary-color);
+}
+
+.recipes_recipe {
+    margin-block-end: 32px;
+}
+
+.recipe_actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 24px;
+}
+
+.recipe_section h4 {
+    margin-block: 12px 8px;
+}
+
+.favorite-button {
+    color: var(--primary-color);
+    transition: color 250ms ease;
+}
+
+.favorite-button:is(:hover, :active, .is-active) {
+    color: #D20A2E;
+}
+
+.favorite-button:is(:active, .is-active) {
+    font-variation-settings: 'FILL'1,
+        'wght'400,
+        'GRAD'0,
+        'opsz'24
+}
+
+/* search results */
+.search-results .recipes:not(.popular-recipes) .recipes_recipe {
+    display: none;
+}
+
+.search-results .recipes:not(.popular-recipes) .recipes_recipe.is-visible {
+    display: flex;
+}
+
+/* show fallback message when no results found, hide it by default */
+#search-not-found {
+    display: none;
+    font-size: var(--h3);
+}
+
+.recipes:not(:has(.is-visible)) #search-not-found {
+    display: block;
+}
